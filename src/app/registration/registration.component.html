@@ -1,0 +1,46 @@
+<div class="container mt-5 ">
+  <div class="text-center">
+    <h1>User Registration Form</h1>
+
+  </div>
+
+
+
+
+  <form #userForm="ngForm">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" required #name="ngModel" class="form-control" id="name" name="name" placeholder="Name" [(ngModel)]="userData.name">
+    </div>
+    <small class="text-danger" [class.d-none]="name.valid || name.untouched">username required</small>
+
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input type="email" required email required #email="ngModel" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email" [(ngModel)]="userData.email">
+      <small class="text-danger" [class.d-none]="email.valid || email.untouched">Please enter a valid email Id</small>
+    </div>
+
+    <div class="form-group">
+      <label for="experience">Experience</label>
+      <input type="number" class="form-control"  required #experience="ngModel"  id="experience" name="experience" placeholder="Experience" [(ngModel)]="userData.experience">
+      <small class="text-danger" [class.d-none]="experience.valid || experience.untouched">Can't be blank</small>
+    </div>
+    
+    <div class="form-group">
+      <label for="domain">Select Domain</label>
+      <select class="custom-select" #domain="ngModel" name="domain" [(ngModel)]="userData.domain">
+       <option *ngFor="let domain of domainArray">{{domain}}</option>
+      </select>
+    </div>
+
+    
+
+   
+    <div class="text-center mt-3">
+      <button type="submit" (click)="onSubmit(userData)" class="btn btn-primary mt-2" [class.disabled]="!userForm.form.valid">Submit</button>
+
+    </div>
+
+  
+  </form>
+</div>

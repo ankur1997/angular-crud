@@ -1,0 +1,32 @@
+
+
+<div class="container">
+
+    <form class="form-inline my-5">
+        <input class="form-control mr-sm-2" #search name="search" type="search" placeholder="Enter Email" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" (click)="getUserByEmail(search.value)" type="submit">Search</button>
+      </form>
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NAME</th>
+            <th scope="col">EMAIL</th>
+            <th scope="col">EXPERIENCE</th>
+            <th scope="col">DOMAIN</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+              <td>{{user.id}}</td>
+              <td>{{user.name}}</td>
+              <td>{{user.email}}</td>
+              <td>{{user.experience}}</td>
+              <td>{{user.domain}}</td>
+              <td><button class="btn btn-danger" (click)="deleteById(user.id)">Delete</button></td>
+          </tr>
+          
+        </tbody>
+      </table>
+</div>
